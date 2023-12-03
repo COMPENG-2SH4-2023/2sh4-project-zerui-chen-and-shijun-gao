@@ -3,12 +3,9 @@
 
 #include <cstdlib>
 #include <time.h>
-
 #include "objPos.h"
 #include "objPosArrayList.h"
-
 using namespace std;
-
 
 class GameMechs
 {
@@ -18,28 +15,39 @@ class GameMechs
 
     // You will include more data members and member functions to complete your design.
 
-    private:
-        char input;
-        bool exitFlag;
-        
-        int boardSizeX;
-        int boardSizeY;
+private:
+    char input;
+    bool exitFlag;
+    bool loseFlag;
+    int score;
+    int boardSizeX;
+    int boardSizeY;
+    int Length;
+    objPos foodPos;
 
-    public:
-        GameMechs();
-        GameMechs(int boardX, int boardY);
-        
-        bool getExitFlagStatus();
-        void setExitTrue();
+public:
+    GameMechs();
+    GameMechs(int boardX, int boardY);
+    ~GameMechs();
 
-        char getInput();
-        void setInput(char this_input);
-        void clearInput();
+    bool getExitFlagStatus();
+    void setExitTrue();
 
-        int getBoardSizeX();
-        int getBoardSizeY();
-      
+    bool getLoseFlagStatus();
+    void setLoseFlag();
 
+    char getInput();
+    void setInput(char this_input);
+    void clearInput();
+
+    int getBoardSizeX();
+    int getBoardSizeY();
+
+    int getScore();
+    void incrementScore();
+
+    void generateFood(objPos blockOff);
+    void getFoodPos(objPos &returnPos);
 };
 
 #endif

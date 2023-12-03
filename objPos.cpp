@@ -1,10 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
 #include "objPos.h"
 
 objPos::objPos()
 {
     x = 0;
     y = 0;
-    symbol = 0; //NULL
+    symbol = 0; // NULL
 }
 
 objPos::objPos(objPos &o)
@@ -13,7 +17,6 @@ objPos::objPos(objPos &o)
     y = o.y;
     symbol = o.symbol;
 }
-
 
 objPos::objPos(int xPos, int yPos, char sym)
 {
@@ -46,15 +49,25 @@ char objPos::getSymbol()
     return symbol;
 }
 
-bool objPos::isPosEqual(const objPos* refPos)
+bool objPos::isPosEqual(const objPos *refPos)
 {
     return (refPos->x == x && refPos->y == y);
 }
 
-char objPos::getSymbolIfPosEqual(const objPos* refPos)
+char objPos::getSymbolIfPosEqual(const objPos *refPos)
 {
-    if(isPosEqual(refPos))
+    if (isPosEqual(refPos))
         return getSymbol();
     else
         return 0;
+}
+
+bool objPos::isOnEdge(int maxRows, int maxCols)
+{
+    if (x == 0 || x == maxRows - 1 || y == 0 || y == maxCols - 1)
+    {
+        symbol = '#'; // If on the edge, change symbol to '#'.
+        return true;
+    }
+    return false;
 }

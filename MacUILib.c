@@ -5,7 +5,7 @@ print_ptr MacUILib_printf;
 #ifdef WINDOWS
 
 	#include <conio.h>
-	
+	#include <unistd.h>
 	void MacUILib_init(void)
 	{
 		MacUILib_printf = &printf;
